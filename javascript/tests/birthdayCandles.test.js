@@ -1,4 +1,4 @@
-let birthdayCandles = require('../birthdayCandles')
+let birthdayCandles = require('../algos/birthdayCandles')
 
 test('Return the number of tallest candles on cake', () =>{
 

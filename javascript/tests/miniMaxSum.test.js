@@ -1,4 +1,4 @@
-const miniMaxSum = require('../miniMaxSum')
+const miniMaxSum = require('../algos/miniMaxSum')
 
 
 let output = ""

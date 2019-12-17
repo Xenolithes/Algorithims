@@ -1,4 +1,4 @@
-let timeConversion = require('../timeConversion');
+let timeConversion = require('../algos/timeConversion');
 
 describe('should conver to 24 hour format', () => {
 let input = ""

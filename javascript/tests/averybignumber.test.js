@@ -1,4 +1,4 @@
-const aVeryBigNumber = require('../averybigsum')
+const aVeryBigNumber = require('../algos/averybigsum')
 const randomRangeNum = require('./randomNumGen')
 
 
