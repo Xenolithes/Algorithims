@@ -32,7 +32,6 @@ function sumStrings(a,b) {
         }else{
             addOne = 0
         }
-        console.log(sum)
         solutionArray.push(sum.toString())
     }
     if (addOne > 0) solutionArray.push('1')
