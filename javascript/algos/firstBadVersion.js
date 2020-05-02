@@ -1,4 +1,3 @@
-
 const solution = (isBadVersion) => {
   return (n) => {
     if (n === 1) return n;
@@ -6,29 +5,30 @@ const solution = (isBadVersion) => {
 
     let LL = 1;
     let UL = n;
-    let trigger = false;
-    console.log(isBadVersion(Math.floor(UL / 2)));
-    
+
     let recurse = (LL, UL) => {
-      if (LL + 1 === UL) {
-        return LL;
-      }
-      if (!isBadVersion(Math.floor(UL /2) + LL)) {
-        LL = Math.floor(UL / 2) + LL; 
-      } else {
-        UL = Math.floor((UL-LL) / 2) + LL;
-      }
-      return recurse(LL, UL)
-    }
+      let m = Math.floor((UL - LL) / 2) + LL;
 
-    
-    let answer = recurse(LL, UL)
-    console.log(answer)
-    return isBadVersion(answer) ? answer : answer + 1
+      let upper = isBadVersion(m + 1);
+      let middle = isBadVersion(m);
+      let lower = isBadVersion(m - 1);
+
+      if (!upper && !middle && !lower) {
+        LL = m + 1;
+      } else if (upper && middle && lower) {
+        UL = m - 1;
+      } else if (upper && middle && !lower) {
+        return m;
+      } else if (upper && !middle && !lower) {
+        return m + 1;
+      }
+
+      return recurse(LL, UL);
+    };
+
+    let answer = recurse(LL, UL);
+    return isBadVersion(answer) ? answer : answer + 1;
   };
-    
-  }
+};
 
-
-
-module.exports = solution
+module.exports = solution;
