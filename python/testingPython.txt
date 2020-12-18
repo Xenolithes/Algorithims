@@ -1,0 +1,6 @@
+Testing python
+
+To include python tests in a python testing script you have to add them to a testing
+
+if ___name__ == '__main__'
+    unittest.main()
