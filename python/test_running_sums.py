@@ -17,5 +17,10 @@ class TestrunningSum(unittest.TestCase):
       result = runningSum(nums)
       self.assertEqual(result, [-8, -6, -9])
       return
+   def test_mix(self):
+      nums = [ -8, 2, -3]
+      result = runningSum(nums)
+      self.assertEqual(result, [-8, -6, -9])
+      return
 if __name__ == '__main__':
    unittest.main()
