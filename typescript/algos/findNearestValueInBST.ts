@@ -72,4 +72,24 @@ export class BSTmethods {
     None / null.
 
      */
+
+    branchSums(root: BST): number[] {
+        const output: number[] = [];
+        function traverseAndAdd(node: BST, sum: number){
+            const currSum = node.value + sum;
+            if(node.left !== null){
+                traverseAndAdd(node.left, currSum);
+            }
+            if(node.right !== null) {
+                traverseAndAdd(node.right, currSum);
+            }
+
+            if(node.left === null && node.right === null){
+                output.push(currSum);
+            }
+        }
+        traverseAndAdd(root, 0);
+
+        return output;
+      }
 }
