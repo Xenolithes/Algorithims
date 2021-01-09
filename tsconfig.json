@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "module": "CommonJS",
+      "target": "ES2017",
+      "declaration": true,
+      "declarationMap": true,
+      "moduleResolution": "node",
+      "noImplicitAny": false,
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "preserveConstEnums": true,
+      "outDir": "./typescript/build",
+      "sourceMap": true,
+      "skipLibCheck": true //may needs to be changed in the future
+    },
+    "resolve": {
+      "extensions": ["", ".ts"]
+    },
+    "include": ["typescript/**/*.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+  }
+  
