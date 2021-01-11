@@ -64,13 +64,6 @@ export class BSTmethods {
     A branch sum is the sum of all values in a Binary Tree branch. A Binary Tree
     branch is a path of nodes in a tree that starts at the root node and ends at
     any leaf node.
-
-
-    Each BinaryTree node has an integer value, a
-    left child node, and a right child node. Children
-    nodes can either be BinaryTree nodes themselves or
-    None / null.
-
      */
 
     branchSums(root: BST): number[] {
@@ -92,4 +85,42 @@ export class BSTmethods {
 
         return output;
       }
+
+
+      /**
+       * 
+    The distance between a node in a Binary Tree and the tree's root is called the
+    node's depth.
+
+
+    Write a function that takes in a Binary Tree and returns the sum of its nodes'
+    depths.
+       */
+
+      nodeDepths(root: BST): number {
+        let totalDepth: number = 0;
+        function traverse (node: BST, currDepth: number){
+            const currVal = currDepth + 1;
+            totalDepth += currVal
+
+            if(node.left){
+                traverse(node.left, currVal);
+            }
+            if(node.right){
+                traverse(node.right, currVal);
+            }
+        }
+        traverse(root, -1);
+        return totalDepth;
+      }
+
+
+      /***
+       * 
+    You're given a Node class that has a name and an
+    array of optional children nodes. When put together, nodes form
+    an acyclic tree-like structure.
+
+    
+       */
 }

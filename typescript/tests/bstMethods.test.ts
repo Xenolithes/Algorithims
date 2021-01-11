@@ -1,4 +1,4 @@
-import { BST, BSTmethods } from "../algos/findNearestValueInBST";
+import { BST, BSTmethods } from "../algos/BSTmethods";
 import { JestHelpers, BSTGenerator } from "./helpers"
 
 const helpers  = new JestHelpers();
