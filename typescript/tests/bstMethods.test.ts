@@ -1,7 +1,7 @@
 import { BST, BSTmethods } from "../algos/BSTmethods";
 import { JestHelpers, BSTGenerator } from "./helpers"
 
-const helpers  = new JestHelpers();
+const helpers = new JestHelpers();
 const bstGen = new BSTGenerator();
 const methods = new BSTmethods();
 
