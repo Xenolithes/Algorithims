@@ -8,6 +8,54 @@ export class BST {
         this.left = null;
         this.right = null;
     }
+
+    insert(value: number): BST {
+        function traverse (node: BST): void {
+            if(value > node.value){
+                if(node.right){
+                    traverse(node.right)
+                }else{
+                    node.right = new BST(value);
+                }
+            }else if(value < node.value){
+                if(node.left){
+                    traverse(node.left)
+                }else{
+                    node.left = new BST(value)
+                }
+            }
+        }
+        traverse(this);
+        // Do not edit the return statement of this method.
+        return this;
+    }
+
+    contains(value: number): boolean {
+        function traverse (node: BST): boolean {
+            if(node.value === value){
+                return true
+            }else if(value > node.value){
+                if(node.right){
+                    traverse(node.right)
+                }else{
+                    return false;
+                }
+            }else if(value < node.value){
+                if(node.left){
+                    traverse(node.left)
+                }else{
+                    return false
+                }
+            }
+        }
+        return traverse(this);
+    }
+
+    remove(value: number): BST {
+        // Write your code here.
+        // Do not edit the return statement of this method.
+        return this;
+    }
 }
 
 export class BSTmethods {
@@ -68,59 +116,59 @@ export class BSTmethods {
 
     branchSums(root: BST): number[] {
         const output: number[] = [];
-        function traverseAndAdd(node: BST, sum: number){
+        function traverseAndAdd(node: BST, sum: number) {
             const currSum = node.value + sum;
-            if(node.left !== null){
+            if (node.left !== null) {
                 traverseAndAdd(node.left, currSum);
             }
-            if(node.right !== null) {
+            if (node.right !== null) {
                 traverseAndAdd(node.right, currSum);
             }
 
-            if(node.left === null && node.right === null){
+            if (node.left === null && node.right === null) {
                 output.push(currSum);
             }
         }
         traverseAndAdd(root, 0);
 
         return output;
-      }
+    }
 
 
-      /**
-       * 
-    The distance between a node in a Binary Tree and the tree's root is called the
-    node's depth.
+    /**
+     * 
+  The distance between a node in a Binary Tree and the tree's root is called the
+  node's depth.
 
 
-    Write a function that takes in a Binary Tree and returns the sum of its nodes'
-    depths.
-       */
+  Write a function that takes in a Binary Tree and returns the sum of its nodes'
+  depths.
+     */
 
-      nodeDepths(root: BST): number {
+    nodeDepths(root: BST): number {
         let totalDepth: number = 0;
-        function traverse (node: BST, currDepth: number){
+        function traverse(node: BST, currDepth: number) {
             const currVal = currDepth + 1;
             totalDepth += currVal
 
-            if(node.left){
+            if (node.left) {
                 traverse(node.left, currVal);
             }
-            if(node.right){
+            if (node.right) {
                 traverse(node.right, currVal);
             }
         }
         traverse(root, -1);
         return totalDepth;
-      }
+    }
 
 
-      /***
-       * 
-    You're given a Node class that has a name and an
-    array of optional children nodes. When put together, nodes form
-    an acyclic tree-like structure.
+    /***
+     * 
+  You're given a Node class that has a name and an
+  array of optional children nodes. When put together, nodes form
+  an acyclic tree-like structure.
 
-    
-       */
+  
+     */
 }
