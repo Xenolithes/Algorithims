@@ -10,17 +10,17 @@ export class BST {
     }
 
     insert(value: number): BST {
-        function traverse (node: BST): void {
-            if(value > node.value){
-                if(node.right){
+        function traverse(node: BST): void {
+            if (value > node.value) {
+                if (node.right) {
                     traverse(node.right)
-                }else{
+                } else {
                     node.right = new BST(value);
                 }
-            }else if(value < node.value){
-                if(node.left){
+            } else if (value < node.value) {
+                if (node.left) {
                     traverse(node.left)
-                }else{
+                } else {
                     node.left = new BST(value)
                 }
             }
@@ -31,28 +31,98 @@ export class BST {
     }
 
     contains(value: number): boolean {
-        function traverse (node: BST): boolean {
-            if(node.value === value){
-                return true
-            }else if(value > node.value){
-                if(node.right){
+			let output: boolean | null = null
+        function traverse(node: BST) {
+            if (node.value === value) {
+                output = true
+            } else if (value > node.value) {
+                if (node.right) {
                     traverse(node.right)
-                }else{
-                    return false;
+                } else {
+                    output = false;
                 }
-            }else if(value < node.value){
-                if(node.left){
+            } else if (value < node.value) {
+                if (node.left) {
                     traverse(node.left)
-                }else{
-                    return false
+                } else {
+                    output = false
                 }
             }
         }
-        return traverse(this);
+			traverse(this);
+        return output === null ? false : output;
     }
 
     remove(value: number): BST {
-        // Write your code here.
+
+        let nodeToReplace: BST | null = null;
+        let cloestNode: BST | null = null;
+        let previousNodeToClosest: BST | null = null;
+        let previousNode: BST | null = null;
+
+        function traverse(node: BST) {
+            if (nodeToReplace) {
+                if (!cloestNode) {
+                    previousNodeToClosest = previousNode
+                    cloestNode = node
+                } else {
+                    let oldDifference = Math.abs(nodeToReplace.value - cloestNode.value);
+                    let newDifference = Math.abs(nodeToReplace.value - node.value);
+                    if (newDifference < oldDifference) {
+                        previousNodeToClosest = previousNode
+                        cloestNode = node
+                    } else if (newDifference === oldDifference) {
+                        if (node.value > cloestNode.value) {
+                            previousNodeToClosest = previousNode
+                            cloestNode = node;
+                        }
+                    }
+                }
+            }
+
+            if (node.value === value && !nodeToReplace) {
+                nodeToReplace = node
+            }
+
+            if (node.left || node.right) { previousNode = node; }
+
+            if (value > node.value && !nodeToReplace) {
+                if (node.right) {
+                    traverse(node.right)
+                }
+            } else if (value < node.value && !nodeToReplace) {
+                if (node.left) {
+                    traverse(node.left)
+                }
+            } else if (nodeToReplace) {
+                if (node.right) {
+                    traverse(node.right)
+                }
+                if (node.left) {
+                    traverse(node.left)
+                }
+            }
+        }
+        traverse(this);
+
+        if (cloestNode && nodeToReplace ) {
+            nodeToReplace.value = cloestNode.value;
+            const leftNextNode: BST | null = cloestNode.left;
+            const rightNextNode: BST | null = cloestNode.right;
+            if (previousNodeToClosest) {
+                if (previousNodeToClosest.right.value === cloestNode.value) {
+                    previousNodeToClosest.right = null
+                } else if (previousNodeToClosest.left.value === cloestNode.value) {
+                    previousNodeToClosest.left = null;
+                }
+            }
+            if(leftNextNode){
+                this.insert(leftNextNode.value)
+            }
+            if(rightNextNode){
+                this.insert(rightNextNode.value)
+            }
+        }
         // Do not edit the return statement of this method.
         return this;
     }
