@@ -1,7 +1,6 @@
 import { ErrorHandler } from "./errorHandler"
 import { FileErrorLoggingStrategy } from "./fileErrorLogging"
 import { ConsoleErrorDisplayStrategy } from "./consoleErrorDisplay"
-import { createCallChain } from "typescript";
 
 const errorHandler = new ErrorHandler( new ConsoleErrorDisplayStrategy(), new FileErrorLoggingStrategy() );
 
