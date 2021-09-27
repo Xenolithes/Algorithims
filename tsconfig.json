@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
+      "baseUrl": "typescript",
+      "paths": {
+        "@algos/*": ["algos/*"],
+        "@tests/*": ["tests/*"]
+      },
       "module": "CommonJS",
       "target": "ES2017",
       "declaration": true,

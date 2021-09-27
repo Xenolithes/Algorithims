@@ -1,0 +1,20 @@
+Hey you! You are an amazing person!
+You are strong, compassionate, emotional, and dependable!
+Keep working on getting better at not only code but also at being a better person!
+Love yourself, remember to be grateful for the little things, and to think before you speak!
+
+Ok here are your Go notes <3
+
+
+Enabl dependency tracking by creating a go.mod file. 
+
+go mod init example/hello
+go run .
+
+
+adding a package add the import then run
+
+go mod tidy
+
+go test
+go test -v
