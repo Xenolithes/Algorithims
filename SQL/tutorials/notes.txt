@@ -1,0 +1,156 @@
+Data Types
+
+INTEGER, a positive or negative whole number
+TEXT, a text string
+DATE, the dat formatted as YYYY-MM-DD
+REAL, a decimal value
+NULL, represents missing or unknown data
+
+Statements
+
+A statement is text that the database recognizes as a valid command
+
+CREATE TABLE table_name (
+    column_1 data_type,
+    column_2 data_type,
+    column_3 data_type,
+)
+
+INSERT INTO table_name(id, name, age)
+VALUES (id_value, name_value, age_value)
+
+
+SELECT column FROM table_name;
+SELECT * FROM table_name; 
+
+ALTER TABLE statement adds a new column to a table, ADD COLUMN adds a new column to the table
+ALTER TABLE table_name
+ADD COLUMN column_name TEXT;
+
+UPDATE table_name
+SET column_name = 'value'
+WHERE id = value;
+
+DELETE FROM table_name
+WHERE column_name IS value
+
+
+Constraints that add information about how a column can be used are invoked after specifying
+the data type for a column. They can be used to tell the data base to reject inserted data
+that does not adhere to certain restrictions.
+
+ CREATE TABLE awards (
+   id INTEGER PRIMARY KEY,
+   recipient TEXT NOT NULL,
+   award_name TEXT DEFAULT 'Grammy'
+ );
+
+ SELECT * FROM awards;
+
+
+Query
+
+SELECT name AS 'Titles' FROM movies;
+
+This will pull a list of names of movies but will be listed as titles instead of names
+
+Distinct
+
+When we are examining data in a table, it can be helpful to know what distinct values exist
+in a particular column
+
+DISTINCT is ued to return unique values in the oautput. It filters out all duplicate values
+in the specified columns
+
+SELECT DISTINCT column_name FROM table_name
+
+WHERE We can restrictour query results using WHERE clause in order to obrain only the information
+we want.
+
+SELECT * FROM table WHERE colum_name > value;
+
+Operators
+= equal to
+!= not equal to
+> greater than
+< less than
+>= greater than or equal to
+<= less than or equal to
+
+LIKE can be a useful operator when you want to compare similar values.
+
+SELECT * FROM table_name WHERE name LIKE 'va_ue';
+ The _ in the string says that it can be substitute any individual character without breaking
+ the pattern
+
+ THe percentage sign % is another wildcard character that matches zero or more missing letters in the pattern
+ For Example
+ A% matches all values that begin with the letter 'A'
+ %a matches all value sthat end with 'a'
+ You can also use both
+ %a%
+
+
+ Test for Null values
+ IS NULL 
+ IS NOT NULL
+
+ SELECT column_name FROM table_name WHERE column_name IS NOT NULL
+
+
+The BETWEEN operator is used in a WHERE clause to filter the
+results set within a certain range. It accepts two values that are
+either number, text or dates.
+
+for numbers and date it works as you think it would
+for text it filters results set for within the alphabetical range
+
+SELECT * FROM table WHERE year BETWEEN 1970 AND 1979;
+
+And 
+Sometimes we want to combine multiple conditions in a WHERE clause to make the result
+set more specific and useful
+
+SELECT * FROM table_name WHERE condition_one AND condition_two
+
+Or 
+The OR operator can also be used to combine multiple conditions in WHERE but
+thereis a fundamental difference opertor displays a row if any condition is true
+
+SELECT * FROM table_name WHERE condition_one OR condition_two;
+
+Order By
+
+We can sort the results using ORDER BY, either alphabetically or numerically.
+Sorting the results often makes the data more useful and easier to analyze
+
+SELECT * FROM table_name ORDER BY column_name
+SELECT * FROM table_naem ORDER BY column_name DESC;
+
+Limit
+
+Limit is a clause that lets you specify the maximum number of rows the result set will have
+THis save space on screen and makes queries run faster
+
+SELECT * FROM table_name LIMIT 10;
+
+example of getting the top three of a particular column
+SELECT * FROM table_name ORDER BY column_name DESC LIMIT 3;
+
+Case 
+
+A CASE statement allow us to create different outputs (usually in the SELECT statement)
+It is the SQL's way of handling if-then logic.
+
+Example
+SELECT name,
+CASE 
+    WHEN condition_one THEN 'value'
+    WHEN condition_two THEN 'value'
+    ELSE 'value'
+END
+AS 'Temp Column Name'
+FROM table_name;
+
+
+Aggregations
