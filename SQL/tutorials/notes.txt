@@ -154,3 +154,179 @@ FROM table_name;
 
 
 Aggregations
+
+Calculations performed on multiple rows of a table are called aggregates
+
+COUNT (): count the number of rows
+SUM (): the sum of values in a column
+MAX()/MIN(): The largest/smallest values
+AVG(): The average of the calues in a Column
+ROUND(): Round the values in the column
+
+count
+The fastest way to caluclate how many rows are in a table is to use the COUNT() functions
+
+SELECT COUNT(*) FROM table_name
+This will count every row 
+
+
+SUM 
+
+SQL makes it wasy to add all values in a particular column using SUM()
+
+SUM() is a fucntion that take the name of a column as an argument and return sthe sum
+of all the values in that column
+
+Max/MIN
+The MAX() and MIN() functions return the highest and lowest values in a column, respecively
+
+Average 
+SQL uses the AVG() function to quickly claculate the average value of a particular column
+
+Round
+By default SQL tries to be as precise as possible without rounding
+We can make the result table easier to read using the ROUND() function
+
+Round() function take two arguments inside the parenthesis
+1. Column Name
+2. INTEGER
+
+It rounds the value in the column to the number of decimal places specified by the integer
+
+Exmaple of using both ROUND and AVG
+SELECT ROUND(AVG(price), 2) FROM table_name;
+
+
+Group By 1
+
+Oftentimes, we will want to caluclate an aggregate for data with certain characteristics.
+FOr instance we might want to know the meain IMDb ratings for movies each year
+
+GROUP BY is a clause in SQL that is used with aggregate functions. It is used in
+collaboration with the SELECT statements to arrange identical data into groups
+
+The GROUP BY statement comes after any WHERE statements but before ORDER BY or LIMIT
+
+SELECT column_name, SUM(column_name) FROM table_name GROUP BY column_name
+
+Group By 2
+
+somteimes we want to GROUP BY a calculation done on a column
+for instance we might want to know how many items have a value that rounds to 1, 2, 3, 4, or 5
+
+SQL lets us use column reference(s) in GROUP BY
+1: Is the first column selected
+2: Is the second column selected
+3: Is the third column selected
+
+For Example
+
+SELECT ROUND(column_name), COUNT(column_name) FROM table_name GROUP BY 1 ORDER BY 1;
+In this example 1 refers to the first column in the SELECT statement
+
+
+Having 
+
+In addition to being able to gorup data using GROUP BY, SQL also allos
+one to filter which groups to include and which to exclude
+
+For instance imagine that we want tos ee ho many items of different types were
+produced over a period of tiem but we only care about a pariticular time formatted
+we can't use WHERE because we do not want to filter the rows we want to filter groups
+this is wehrer HAVING come in
+
+SELECT column_name, column_name, COUNT(column_name) FROM table_name GROUP BY 1, 2 HAVING COUNT(column_name) > value;
+
+Having can be placed after the GROUP BY clause unlike the WHERE clause
+
+Multiple Tables
+
+Combining tables manually is time-consuming. Luckily, SQL gives 
+an easy sequence for this: it's called JOIN.
+
+SELECT * FROM table JOIN table ON table.column_name = table.column_name
+
+
+SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+
+1. The first line selects all columns from our combined table.
+If you only want to select certain columns, we can specify which
+ones we weant
+
+2. The second line specifies the first table that we want to look in, orders
+3. The third line uses JOIN to say that we want to combine information from orders with customers
+4. The fourth line tessl us how to combine the two tables. We wnat to match orders table's customer_id
+column with customers table's cutomer_id column
+
+You can then use the WHERE clause after the JOIN to reduce the number of returned rows
+
+
+INNER JOINS
+
+When one performas a simple join (often called an inner joion) our results only includes rows that match our ON condition
+
+An example count all the rows that are joined on a similar id
+
+SELECT COUNT(*) FROM table_one JOIN table_two ON table_one.id = table_two.id;
+
+
+LEFT JOINS
+
+What if we want to combine two tables and keep some of the un-matched rows?
+SQL lets us to this through a command called LEFT JOIN.
+A left join will keep all rows from the frist table regardless of whether there is a matching
+row in the second table.
+
+SELECT *
+FROM table1
+LEFT JOIN table2
+  ON table1.c2 = table2.c2;
+
+
+  Primary Key vs Foreign Key
+
+  Primary Keys are uniquely identifies
+  - None of the value can be NULL
+  - Each value must be unique ( i.e., you can't have two rows with the same primary key value in the table )
+  - A table can not have more than one primary key column
+
+  When a primary key for one table appears in a different table, it is called a foreign key
+
+
+  CROSS JOIN 
+  Sometimes, we just want to combine all rows of one table with another table
+  This would be a CROSS JOIN
+  
+  SELECT * FROM table_name CROSS JOIN table_name;
+
+  UNION
+
+  Sometimes we just want to stack one dataset on top of the other
+  Well, the UNION operator allows us to do that.
+  
+  SELECT * FROM table1 UNION SELECT * FROM table2
+
+  Rules for unions tables must have the same number of columns
+  The columns must have the same data types in the same order as the first table
+
+  WITH
+
+  Often times you want to combine two tables but one of the tablesis the result of another calculation
+
+  The WITH statement allows us to perform a separate
+  query
+
+  WITH temporary_table AS (
+    SELECT ....
+    ...
+    ...
+    ...
+    ...
+  )
+  SELECT *
+  FROM temporary_table
+  JOIN table_name
+  ON ____ = _____
