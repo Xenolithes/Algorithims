@@ -1,6 +1,6 @@
 # Given an array nums. Return the running sums throughout the list
 
-def runningSum(nums):
+def running_sum(nums):
    current_sum = 0
    running_list = []
    for number in nums:

@@ -1,7 +1,7 @@
 # You are given an m x n integer grid accounts where accoutns[i][j] is the amount of mony the ith cusomer has in the jth bank.
 # Return the wealth that the richtest customer has.
 
-def maximumWealth(self,accounts):
+def maximum_wealth(self,accounts):
    max_wealth = float('-inf')
    for account in accounts:
       account_wealth = 0

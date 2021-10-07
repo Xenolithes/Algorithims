@@ -1,5 +1,5 @@
 class Solution:
-    def twoSum(self, nums: [int], target: int):
+    def two_sum(self, nums: [int], target: int):
         xi = 0
         yi = 0
         for x in nums:
