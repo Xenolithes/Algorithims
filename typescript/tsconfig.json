@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "baseUrl": "typescript",
+      "baseUrl": "./",
       "paths": {
         "@algos/*": ["algos/*"],
         "@tests/*": ["tests/*"]
