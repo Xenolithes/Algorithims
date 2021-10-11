@@ -1,0 +1,57 @@
+Guido Van Rossum Said, "Code is read much more often thatn it is written"
+
+This is because after the code is written it will not be written again, but it will be read over and over.
+This is why readibility is very valuable when it comes to code. Since you have to remember why you wrote the code that way
+
+Naming Convnentions:
+
+Never use l, O or I in single letter names as they look to closely like 1 and 0
+
+Functions: Use a lowercase word or words. Separate words by underscores to improve readibility
+ Example: function, my_function
+
+Variables: use a lowercase single letter, word, or words. Separate words with underscores to improve readibility
+ Example: x, var, my_variable
+
+Class: Start each word with a capital letter. Do not separate words with underscores. This style is called camel case.
+ Example: Model, MyClass
+
+Method: See Functions
+
+Constant: Use an upercase single letter, word or words. Separate words with underscores to improve readability.
+ Example CONSTANT, MY_CONSTANT, MY_LONG_CONSTANT
+
+Module: Use a short, lowercase words or words. Follow snake case
+ Example: module.py my_module.py
+
+Package: Use a short, lowercase word or words. Do not use separate words with underscores
+ Example: package, mypackage
+
+Blank Spaces
+
+2x Between Classes, and Functions
+1x Between Functions in Classes
+As needed in functions, use spairingly
+
+Max Line Length 79 Characters
+
+Line Breaking
+
+Line continuation using code contained in parentheses, brackets or braces
+Break before binary operators
+
+Hanging indentation for line broken line continuations
+
+def function (
+        arg_one, arg_two,
+        arg_three, arg_four):
+    return arg_one
+
+
+Comments, stick to block comments not in-line comments
+
+Utilize the """ """ or  ''' ''' documentation strings
+
+
+White Space and Operators:
+In summary, you should surround most operators with whitespace. However, there are some caveats to this rule, such as in function arguments or when you’re combining multiple operators in one statement.
