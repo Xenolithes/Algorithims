@@ -28,3 +28,5 @@ table = "Coffee Table", 200, 100, 75, 34.50
 print(table[1] * table[2])
 name, length, width, height, price = table
 print(length * width)
+
+#Unpacking makes the code much more readable and less error prone

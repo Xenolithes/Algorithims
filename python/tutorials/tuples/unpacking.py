@@ -14,3 +14,6 @@ print(a),
 print(b)
 print(c)
 
+#You can unpack lists as well, however if you add an item
+#Before unpacking it can break, this is why tuples are great
+#Because you can always unpack a tuple

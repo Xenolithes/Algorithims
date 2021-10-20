@@ -12,7 +12,7 @@ BOLD = "\u001b[1m"
 UNDERLINE = "\u001b[4m"
 REVERSE = "\u001b[7m"
 
-def color_print(text: str, *effects: str) -> None:
+def color_print(text: str, *effects: str) -> str:
     """
     Print 'text' using hte ANSI sequences to change color
 
@@ -22,7 +22,7 @@ def color_print(text: str, *effects: str) -> None:
     """
     effect_string = "".join(effects)
     output_string = "{}{}{}".format(effect_string, text, RESET)
-    print(output_string)
+    return output_string
 
 color_print("Hello, Blue", BLUE)
 color_print("Hello, Green", GREEN)
