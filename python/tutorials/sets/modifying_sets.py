@@ -25,6 +25,5 @@ print(color_set)
 # Create a list of unique colours keeping the order they appeared
 unique_colors = list(dict.fromkeys(colors))
 print(unique_colors)
-
 print()
 print(dict.fromkeys(colors))

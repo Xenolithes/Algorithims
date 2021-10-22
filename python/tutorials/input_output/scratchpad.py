@@ -1,0 +1,1 @@
+print("Fairfax".strip("F"))

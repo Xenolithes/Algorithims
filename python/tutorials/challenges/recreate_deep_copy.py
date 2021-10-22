@@ -9,7 +9,6 @@ def copy_dict( dict_to_copy: dict ) -> dict:
         else:
             copy_of_dict[key] = dict_to_copy[key]
     return copy_of_dict
-        
 
 def copy_list( list_to_copy: list ) -> list:
     copy_of_list = []

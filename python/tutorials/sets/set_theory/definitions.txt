@@ -1,0 +1,39 @@
+If A and B are sets and every element of A is also an element of B
+then:
+
+A is a subset of B 
+B is a superset of a
+
+If A is a subset of B but A is not equal to B
+
+Python Expressions
+B <= A (subset)
+B < A (proper subset)
+A >= B (superset)
+A > B (proper superset)
+
+A = { 1, 3, 5, 7, 18}
+B = {1, 7, 18}
+C = {18, 7, 1, 19}
+
+
+B is a subset of A 
+B <= A 
+
+B is a strict or proper set of A
+Everything in B can be found in A, but not everything in
+A is found in B
+B < A
+
+Every set is a subset of itself, however all sets
+cannot be a strict subset of itself
+
+A <= A ( true )
+A < A ( false )
+
+B <= C ( true )
+B < C ( true )
+C <= A ( false )
+
+A >= B ( true )
+A > B ( true )
