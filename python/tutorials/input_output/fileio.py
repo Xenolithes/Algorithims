@@ -20,6 +20,7 @@
 #     while line:
 #         print(line, end="")
 #         line = jabber_three.readline()
+
 with open("tutorials/input_output/sample.txt", 'r') as jabber_four:
     lines = jabber_four.readlines()
 print(lines)
